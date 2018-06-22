@@ -38,7 +38,7 @@ request({
                 var s = today.getSeconds();
                 
                 if (h <= 12){
-                    console.log("Boa noite!" + h + "h " + m + "m " + s + "s")
+                    console.log("Boa noitinha!" + h + "h " + m + "m " + s + "s")
                 } else {
                     console.log("Bom dia!" + h + "h " + m + "m " + s + "s")
                 }
