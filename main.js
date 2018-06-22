@@ -3,15 +3,14 @@ const fs=require('fs');
 const yargs=require('yargs');
 const argv = yargs.argv;
 
-var googleKey = "AIzaSyCOHWQeslpAf1avsCha6xODKhEX9dKxj8s";
-var darkskyKey = "0052d90410b78b92bebefef86f2b4fe4";
+const keys = require('./keys');
 
 var address = argv.address;
 var encodedAddress = encodeURIComponent(address);
 
 request({
 
-		url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${googleKey}`,
+		url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${keys.googleKey}`,
 		json: true
 		}, (error,response,body) => {
         
@@ -24,7 +23,7 @@ request({
 		console.log("Morada: "+formatted_address)
 
 		request ({
-			url: `https://api.darksky.net/forecast/${darkskyKey}/${lat},${lng}?units=si`,
+			url: `https://api.darksky.net/forecast/${keys.darkskyKey}/${lat},${lng}?units=si`,
 			json: true
 			}, (DSerror, DSresponse, DSbody) => {
 				var temperature = DSbody.currently.temperature;
