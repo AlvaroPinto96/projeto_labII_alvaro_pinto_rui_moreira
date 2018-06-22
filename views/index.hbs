@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="uf8">
-		<title>titulo</title>
-	</head>
+  
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>This is my template!</title>
+    </head>
 
 	<body>
         <form action="/weather">
@@ -12,6 +13,28 @@
         </form>
 	<p>Temperatura: {{texto}}</p>
 
-	</body>
+      <sytle type="text/css">
+      
+      .firstTitle {
+      color:FFF;
+      }
+        
+      </sytle>
+
+      <div class="firstTitle">
+        <h1>Weatherito</h1>
+      </div>
+
+      <div class="secondTitle">
+        <h2>What do you want to know?</h2>
+        <h5>Choose whatever you want!</h5>
+      </div>
+
+      <form action="/weather">
+        <input type="text" name="local"/>
+        <button type="submit">Send!</button>
+      </form>
+
+    </body>
 
 </html>
