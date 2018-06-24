@@ -49,33 +49,53 @@ app.get('/weather', (req, res) => {
                         var today = new Date(DSbody.currently.time * 1000);
                         var h = today.getHours();
                         var m = today.getMinutes();
-                        var s = today.getSeconds();
+                        var windSpeed = DSbody.currently.windSpeed;
                         
-                        if (h <= 12){
-                            console.log("Boa noite!" + h + "h " + m + "m " + s + "s")
+                        
+                        if (h >= 7 && h < 12){
+                            infoHoras = "manhã";
+                        } else if (h >= 12 && h < 20){
+                            infoHoras = "tarde";
                         } else {
-                            console.log("Bom dia!" + h + "h " + m + "m " + s + "s")
+                            infoHoras = "noite";
                         }
+
                         console.log("Temperatura: "+temperature + "ºC");
                         console.log("Temperatura aparente: "+apparentTemperature + "ºC");
                         console.log("Humidade: " + humidity*100 + "%");
-        
-                        if (uvIndex <= 2) {
-                            console.log("Índice de ultravioletas baixo: " + uvIndex);
-                        }
-                        if (uvIndex > 2 && uvIndex <= 5) {
-                            console.log("Índice de ultravioletas médio: " + uvIndex);
-                        }
-                        
                         console.log("Probabilidade de precipitação "+ precip*100 + "%");
 
+                        if (uvIndex <= 2) {
+                            infoUVS = "baixo. ";
+                            infoUVS2 = " Não é necessário proteção.";
+                        }
+                        if (uvIndex > 2 && uvIndex <= 5) {
+                            infoUVS = "moderado. ";
+                            infoUVS2 = " NÃO ESQUECER! Óculos de Sol e protetor solar.";
+                        }
+                        if (uvIndex > 5 && uvIndex <= 7) {
+                            infoUVS = "elevado. ";
+                            infoUVS2 = " ATENÇÃO! Utilizar óculos de Sol com filtro UV, chapéu, t-shirt e protetor solar.";
+                        }
+                        if (uvIndex > 7 && uvIndex <= 10) {
+                            infoUVS = "muito elevado. ";
+                            infoUVS2 = " CUIDADO! Utilizar óculos de Sol com filtro UV, chapéu, t-shirt, guarda-sol, protector solar e evitar a exposição das crianças ao Sol.";
+                        }
+                        if (uvIndex >10) {
+                            infoUVS = "extremo. ";
+                            infoUVS2 = " PERIGO! Evitar o mais possível a exposição ao Sol. Aproveite para descansar em casa.";
+                        }
+                        
+                        
+
                         res.render('index.hbs', 
-                        {horas: "São " + h + " h " + m + " m " + s + " s ",
+                        {horas: "São " + h + ":" + m + " da " + infoHoras,
                         temperatura: "Temperatura: " + temperature + "ºC",
                         temperatura_aparente: "Temperatura aparente: " + apparentTemperature + "ºC",
                         humidade: "Humidade: " + humidity*100 + "%",
-                        indice_uvs: "Índice de UV's: " + uvIndex,
-                        precipitacao: "Probabilidade de precipitação: "  + precip*100 + "%"
+                        indice_uvs: "Índice de ultravioletas " + infoUVS + " (" + uvIndex + ") " + infoUVS2,
+                        precipitacao: "Probabilidade de precipitação: "  + precip*100 + "%",
+                        ventos: "Ventos a " + windSpeed + "km/h"
                         });
                     });
         
