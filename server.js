@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const request = require('request');
 const app = express();
+const fs=require('fs');
+const yargs=require('yargs');
 
 const keys = require("./keys");
 
@@ -43,7 +45,7 @@ app.get('/weather', (req, res) => {
                         var apparentTemperature = DSbody.currently.apparentTemperature;
                         var humidity = DSbody.currently.humidity;
                         var uvIndex = DSbody.currently.uvIndex;
-                        var precipitacao = DSbody.hourly.data[1].precipProbability;
+                        var precip = DSbody.hourly.data[1].precipProbability;
                         var today = new Date(DSbody.currently.time * 1000);
                         var h = today.getHours();
                         var m = today.getMinutes();
@@ -65,9 +67,16 @@ app.get('/weather', (req, res) => {
                             console.log("Índice de ultravioletas médio: " + uvIndex);
                         }
                         
-                        console.log("Probabilidade de precipitação "+ precipitacao*100 + "%");
+                        console.log("Probabilidade de precipitação "+ precip*100 + "%");
 
-                        res.render('index.hbs', {texto: temperature });
+                        res.render('index.hbs', 
+                        {horas: "São " + h + " h " + m + " m " + s + " s ",
+                        temperatura: "Temperatura: " + temperature + "ºC",
+                        temperatura_aparente: "Temperatura aparente: " + apparentTemperature + "ºC",
+                        humidade: "Humidade: " + humidity*100 + "%",
+                        indice_uvs: "Índice de UV's: " + uvIndex,
+                        precipitacao: "Probabilidade de precipitação: "  + precip*100 + "%"
+                        });
                     });
         
              
