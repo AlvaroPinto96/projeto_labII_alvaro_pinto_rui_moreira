@@ -22,6 +22,7 @@ app.get('/', (request, response) => {
 
 app.get('/weather', (req, res) => {
         
+
       var address=req.query.local;
         var encodedAddress = encodeURIComponent(address);
 
@@ -31,6 +32,8 @@ app.get('/weather', (req, res) => {
                 json: true
                 }, (error,response,body) => {
                 
+                    try{
+
                 var lat = body.results[0].geometry.location.lat;
                 var lng = body.results[0].geometry.location.lng;
                 var formatted_address = body.results[0].formatted_address;
@@ -98,16 +101,18 @@ app.get('/weather', (req, res) => {
                         ventos: "Ventos a " + windSpeed + "km/h"
                         });
                     });
-        
+                }
+                catch(err){
+                    res.render('index.hbs', {
+                        localizacao: "O endereço que tentou procurar não é válido!"
+                    })
+                }
              
                });
-		/*response.send("<h1>About this page</h1><p>very cool</p>" 
-		{
-		name: '�lvaro',
-		likes: ['reading', 'playing', 'hiking']
-		}
-		);*/
+		
 });
+
+
 
 app.get('/precip', (req, res) => {
     var address=req.query.local;

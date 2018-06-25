@@ -72,7 +72,7 @@ user-select: none;
           
 
           <div class="form-group">
-            <button type="submit" id="submit" class="btn btn-primary">Adicionar</button>
+            <button type="submit" id="fav" class="btn btn-primary">Adicionar</button>
             <button type="reset" id="clean"  class="btn btn-secondary">Limpar lista</button>
         </div>
       </form>
@@ -106,7 +106,6 @@ user-select: none;
 
        $("#favorites-list").hide();
        $("#item").focus();
-
       /*
        * check browser supports local storage
        */
@@ -119,7 +118,8 @@ user-select: none;
           var favoritesList = JSON.parse(favoritesList_string);
           console.log(favoritesList);
           $.each(favoritesList, (index, text) => {
-            $("#favorites-list").append(`<li class="list-group-item">${text}</li>`);
+            $("#favorites-list").append(`<li class="list-group-item"><a href="http://localhost:3500/weather?local=${text}">${text}</a></li>`);
+            //$("#favorites-list").append(`<li class="list-group-item">${text}</li>`);
           });
         }
         
@@ -135,7 +135,7 @@ user-select: none;
           /*
            * add to local storage when the form is submitted
            */
-           .submit(function(){
+           document.getElementById("fav").onclick = function(){
             var favoritesList_string = localStorage.getItem('favoritesList');
             var favoritesList =[];
 
@@ -145,7 +145,7 @@ user-select: none;
             favoritesList.push($("#item").val());
             localStorage.setItem('favoritesList', JSON.stringify(favoritesList));
             console.log(localStorage);
-          })
+          }
       }
     });
     </script>
