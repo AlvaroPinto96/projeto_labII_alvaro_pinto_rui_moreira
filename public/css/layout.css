@@ -1,0 +1,124 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.firstTitle img{
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+}
+    
+  .names {
+background-color: rgba(0,0,0,0.4);
+padding-top:5px;
+padding-bottom:5px;
+}
+
+.names p{
+color:#FFF;
+font-family:"Tw Cen MT Condensed";
+font-size:16px;
+opacity:0.5;
+text-align:center;
+-webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.firstTitle h1{
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+  text-decoration:none;
+  color:#FFF;
+  font-family:Helvetica;
+  font-size:56px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
+
+   .secondTitle h2{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+  text-decoration:none;
+  color:#FFF;
+  font-family:Helvetica;
+  font-size:26px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  }
+
+  .secondTitle h5{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+    text-decoration:none;
+    color:#FFF;
+    font-family:Helvetica;
+    font-size:18px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    }
+
+
+    .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+      
