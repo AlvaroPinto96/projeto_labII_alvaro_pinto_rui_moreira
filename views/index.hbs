@@ -4,63 +4,47 @@
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Projeto Laboratório II</title>
+      <link rel="stylesheet" href="css\layout.css" media="all" />
     </head>
 
 	<body>
-        
-      <style type="text/css">
-      
-      .firstTitle {
-        color:blueviolet;
-      }
 
-      .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+    <style>
+
+.funPre {
+  background-image: url("images/fundo_predefinido.jpg");
+
+  height: 100%; 
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
+    </style>
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+      <div class="funPre">
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-        
-      </style>
+        <div class="names">
+            	<p>WEATHERITO by: Álvaro Pinto & Rui Moreira</p>
+            </div>
 
       <div class="firstTitle">
-        <h1>Weatherito</h1>
+        <h1>Weatherito &nbsp;<img src="images\cloud_predifinida.png" alt="Smiley face" width="85" height="52" ></h1>
       </div>
 
       <div class="secondTitle">
         <h2>What do you want to know?</h2>
+        <h5>Choose whatever you want!</h5>
+      </div>
+
 
 <div class="dropdown">
 <button onclick="myFunction()" class="dropbtn">Escolher</button>
@@ -92,6 +76,26 @@
             <button type="reset" id="clean"  class="btn btn-secondary">Limpar lista</button>
         </div>
       </form>
+      
+       <form action="/weather">
+        <input type="text" name="local"/>
+        <button type="submit">Send!</button>
+      </form>
+      <form action="/precip">
+        <input type="text" name="local"/>
+        <button type="submit">Send!</button>
+      </form>
+      
+  <p>{{localizacao}}</p>
+  <p>{{horas}}</p>
+	<p>{{temperatura}}</p>
+  <p>{{temperatura_aparente}}</p>
+  <p>{{humidade}}</p>
+  <p>{{indice_uvs}}</p>
+  <p>{{precipitacao}}</p>
+  <p>{{ventos}}</p>
+
+  </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -168,26 +172,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-
-        <h5>Choose whatever you want!</h5>
-      </div>
-
-      <form action="/weather">
-        <input type="text" name="local"/>
-        <button type="submit">Send!</button>
-      </form>
-  <form action="/precip">
-        <input type="text" name="local"/>
-        <button type="submit">Send!</button>
-      </form>
-  <p>{{localizacao}}</p>
-  <p>{{horas}}</p>
-	<p>{{temperatura}}</p>
-  <p>{{temperatura_aparente}}</p>
-  <p>{{humidade}}</p>
-  <p>{{indice_uvs}}</p>
-  <p>{{precipitacao}}</p>
-  <p>{{ventos}}</p>
 
     </body>
 
