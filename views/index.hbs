@@ -74,6 +74,78 @@
   </div>
 </div>
 
+
+
+      <form class="form-horizontal">                        
+          <div class="row">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="item"/>
+              <p id="favorites-list-text">Nenhum Item Adicionado</p>
+              <ul class="list-group" id="favorites-list">
+              </ul>
+            </div>
+          </div>
+          
+
+          <div class="form-group">
+            <button type="submit" id="submit" class="btn btn-primary">Adicionar</button>
+            <button type="reset" id="clean"  class="btn btn-secondary">Limpar lista</button>
+        </div>
+      </form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+       $("#favorites-list").hide();
+       $("#item").focus();
+
+      /*
+       * check browser supports local storage
+       */
+      if (localStorage) {
+
+        var favoritesList_string = localStorage.getItem('favoritesList');
+        if (favoritesList_string) {
+          $("#favorites-list-text").hide();
+          $("#favorites-list").show();
+          var favoritesList = JSON.parse(favoritesList_string);
+          console.log(favoritesList);
+          $.each(favoritesList, (index, text) => {
+            $("#favorites-list").append(`<li class="list-group-item">${text}</li>`);
+          });
+        }
+        
+        $("form")
+          /*
+           * clear local storage when the form is reseted
+           */
+          .on('reset', function(){
+            console.log('cleaning!...');
+            localStorage.clear();
+            location.reload();
+          })
+          /*
+           * add to local storage when the form is submitted
+           */
+           .submit(function(){
+            var favoritesList_string = localStorage.getItem('favoritesList');
+            var favoritesList =[];
+
+            if(favoritesList_string) {
+              favoritesList = JSON.parse(favoritesList_string);
+            }
+            favoritesList.push($("#item").val());
+            localStorage.setItem('favoritesList', JSON.stringify(favoritesList));
+            console.log(localStorage);
+          })
+      }
+    });
+    </script>
+
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
