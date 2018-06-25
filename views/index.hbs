@@ -13,25 +13,90 @@
     body, html {
     height: 100%;
     margin: 0;
+    cursor: url(C:\Users\rui_m\Desktop\projeto_labII_alvaro_pinto_rui_moreira\public\images\sol_cursor.png),default;
 }
 
-.bg {
-    background-image: url("images/fundo_prefedefinido.jpg");
+.funPre {
+    background-image: url("images/fundo_predefinido.jpg");
 
     height: 100%; 
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+  user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+
 }
 
+ .firstTitle img{
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+ }
       
-      .firstTitle {
-        color:blueviolet;
-      }
+    .names {
+	background-color: rgba(0,0,0,0.4);
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.names p{
+	color:#FFF;
+	font-family:"Tw Cen MT Condensed";
+	font-size:16px;
+	opacity:0.5;
+	text-align:center;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 
+    .firstTitle h1{
+    position: absolute;
+    top: 11%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	  text-align:center;
+	  text-decoration:none;
+	  color:#FFF;
+	  font-family:Helvetica;
+	  font-size:56px;
+	  user-select: none;
+	  -moz-user-select: none;
+	  -webkit-user-drag: none;
+	  -webkit-user-select: none;
+	  -ms-user-select: none;
+    }
 
+     .secondTitle h2{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	  text-align:center;
+	  text-decoration:none;
+	  color:#FFF;
+	  font-family:Helvetica;
+	  font-size:26px;
+	  user-drag: none; 
+	  user-select: none;
+	  -moz-user-select: none;
+	  -webkit-user-drag: none;
+	  -webkit-user-select: none;
+	  -ms-user-select: none;
+    }
+
+  
       .dropbtn {
     background-color: #3498DB;
     color: white;
@@ -73,10 +138,14 @@
         
       </style>
 
-      <div class="bg">
+      <div class="funPre">
+
+        <div class="names">
+            	<p>WEATHERITO by: Álvaro Pinto & Rui Moreira</p>
+            </div>
 
       <div class="firstTitle">
-        <h1>Weatherito</h1>
+        <h1>Weatherito &nbsp;<img src="images\cloud_predifinida.png" alt="Smiley face" width="85" height="52" ></h1>
       </div>
 
       <div class="secondTitle">
@@ -97,11 +166,15 @@
   </div>
 </div>
 
-   <form action="/weather">
+<form action="/weather">
         <input type="text" name="local"/>
         <button type="submit">Send!</button>
       </form>
-
+      <form action="/precip">
+        <input type="text" name="local"/>
+        <button type="submit">Send!</button>
+      </form>
+  <p>{{localizacao}}</p>
   <p>{{horas}}</p>
 	<p>{{temperatura}}</p>
   <p>{{temperatura_aparente}}</p>
@@ -109,7 +182,7 @@
   <p>{{indice_uvs}}</p>
   <p>{{precipitacao}}</p>
   <p>{{ventos}}</p>
-  
+
 </div>
 <script>
 /* When the user clicks on the button, 

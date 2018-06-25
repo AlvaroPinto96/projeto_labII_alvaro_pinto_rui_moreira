@@ -15,7 +15,7 @@ app.get('/', (request, response) => {
 
 
 		response.render('index.hbs');
-		//response.send("<h1>Hello from express!</h1><p>welcome</p>");
+		
 });
 
 app.get('/weather', (req, res) => {
@@ -60,10 +60,7 @@ app.get('/weather', (req, res) => {
                             infoHoras = "noite";
                         }
 
-                        console.log("Temperatura: "+temperature + "ºC");
-                        console.log("Temperatura aparente: "+apparentTemperature + "ºC");
-                        console.log("Humidade: " + humidity*100 + "%");
-                        console.log("Probabilidade de precipitação "+ precip*100 + "%");
+                        
 
                         if (uvIndex <= 2) {
                             infoUVS = "baixo. ";
@@ -89,7 +86,8 @@ app.get('/weather', (req, res) => {
                         
 
                         res.render('index.hbs', 
-                        {horas: "São " + h + ":" + m + " da " + infoHoras,
+                        {localizacao: "Localização: " + formatted_address,
+                        horas: "São " + h + ":" + m + " da " + infoHoras,
                         temperatura: "Temperatura: " + temperature + "ºC",
                         temperatura_aparente: "Temperatura aparente: " + apparentTemperature + "ºC",
                         humidade: "Humidade: " + humidity*100 + "%",
@@ -109,9 +107,34 @@ app.get('/weather', (req, res) => {
 		);*/
 });
 
-app.get('/carochao', (request, response) => {
-		var date = new Date().toString();
-		response.send(`<h1>Current time</h1><p>${date}</p>`);
-});
+app.get('/precip', (req, res) => {
+    var address=req.query.local;
+        var encodedAddress = encodeURIComponent(address);
+
+        request({
+        
+                url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${keys.googleKey}`,
+                json: true
+                }, (error,response,body) => {
+                
+                var lat = body.results[0].geometry.location.lat;
+                var lng = body.results[0].geometry.location.lng;
+                var formatted_address = body.results[0].formatted_address;
+
+                request ({
+                    url: `https://api.darksky.net/forecast/${keys.darkskyKey}/${lat},${lng}?units=si`,
+                    json: true
+                    }, (DSerror, DSresponse, DSbody) => {
+
+                    var precip = DSbody.hourly.data[1].precipProbability;
+
+                    res.render('index.hbs',{
+                        precipitacao: "Probabilidade de precipitação: "  + precip*100 + "%",
+                    });
+                });
+            });
+
+     
+       });
 
 app.listen(3500);
