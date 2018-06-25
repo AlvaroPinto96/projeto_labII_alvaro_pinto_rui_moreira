@@ -9,10 +9,28 @@
 	<body>
         
       <style type="text/css">
+
+    body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    background-image: url("images/fundo_prefedefinido.jpg");
+
+    height: 100%; 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
       
       .firstTitle {
         color:blueviolet;
       }
+
+
 
       .dropbtn {
     background-color: #3498DB;
@@ -55,12 +73,17 @@
         
       </style>
 
+      <div class="bg">
+
       <div class="firstTitle">
         <h1>Weatherito</h1>
       </div>
 
       <div class="secondTitle">
         <h2>What do you want to know?</h2>
+        <h5>Choose whatever you want!</h5>
+      </div>
+
 
 <div class="dropdown">
 <button onclick="myFunction()" class="dropbtn">Escolher</button>
@@ -74,6 +97,20 @@
   </div>
 </div>
 
+   <form action="/weather">
+        <input type="text" name="local"/>
+        <button type="submit">Send!</button>
+      </form>
+
+  <p>{{horas}}</p>
+	<p>{{temperatura}}</p>
+  <p>{{temperatura_aparente}}</p>
+  <p>{{humidade}}</p>
+  <p>{{indice_uvs}}</p>
+  <p>{{precipitacao}}</p>
+  <p>{{ventos}}</p>
+  
+</div>
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -96,22 +133,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-
-        <h5>Choose whatever you want!</h5>
-      </div>
-
-      <form action="/weather">
-        <input type="text" name="local"/>
-        <button type="submit">Send!</button>
-      </form>
-
-  <p>{{horas}}</p>
-	<p>{{temperatura}}</p>
-  <p>{{temperatura_aparente}}</p>
-  <p>{{humidade}}</p>
-  <p>{{indice_uvs}}</p>
-  <p>{{precipitacao}}</p>
-  <p>{{ventos}}</p>
 
     </body>
 
