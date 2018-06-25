@@ -72,7 +72,7 @@ user-select: none;
           
 
           <div class="form-group">
-            <button type="submit" id="submit" class="btn btn-primary">Adicionar</button>
+            <button type="submit" id="fav" class="btn btn-primary">Adicionar</button>
             <button type="reset" id="clean"  class="btn btn-secondary">Limpar lista</button>
         </div>
       </form>
@@ -135,7 +135,7 @@ user-select: none;
           /*
            * add to local storage when the form is submitted
            */
-           .submit(function(){
+           document.getElementById("fav").onclick = function(){
             var favoritesList_string = localStorage.getItem('favoritesList');
             var favoritesList =[];
 
@@ -145,7 +145,7 @@ user-select: none;
             favoritesList.push($("#item").val());
             localStorage.setItem('favoritesList', JSON.stringify(favoritesList));
             console.log(localStorage);
-          })
+          }
       }
     });
     </script>
