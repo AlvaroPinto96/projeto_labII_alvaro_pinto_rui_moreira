@@ -42,29 +42,17 @@ user-select: none;
 
       <div class="secondTitle">
         <h2>What do you want to know?</h2>
-        <h5>Choose whatever you want!</h5>
+        <h5>Choose the city you want!</h5>
       </div>
-
-
-<div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Escolher</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#temperatura">Temperatura</a>
-    <a href="#temperatura_aparente">Temperatura Aparente</a>
-    <a href="#humidade">Humidade</a>
-    <a href="#raios_uv">Raios UV</a>
-    <a href="#precipitacao">Precipitação</a>
-    <a href="#ventos">Ventos</a>
-  </div>
-</div>
-
 
 
       <form class="form-horizontal">                        
           <div class="row">
             <div class="col-md-6">
               <input type="text" class="form-control" id="item"/>
-              <p id="favorites-list-text">Nenhum Item Adicionado</p>
+              <div class="favoritesBack">
+              <p class="favorites" id="favorites-list-text">Nenhum Item Adicionado</p>
+              </div>
               <ul class="list-group" id="favorites-list">
               </ul>
             </div>
@@ -77,13 +65,13 @@ user-select: none;
         </div>
       </form>
       
+    <div class="thirdTitle">
+        <h5>You can also add one or more citys you like to you favorites!</h5>
+      </div>
+
        <form action="/weather">
-        <input type="text" name="local"/>
-        <button type="submit">Send!</button>
-      </form>
-      <form action="/precip">
-        <input type="text" name="local"/>
-        <button type="submit">Send!</button>
+        <input type="text2" name="local"/>
+        <button type="submit2">Send</button>
       </form>
 
   <p>{{localizacao}}</p>
