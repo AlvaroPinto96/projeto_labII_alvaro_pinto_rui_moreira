@@ -5,10 +5,11 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Projeto Laboratório II</title>
       <link rel="stylesheet" href="css/layout.css" media="all" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
 	<body>
-
+    
     <style>
 
 .funPre {
@@ -36,9 +37,23 @@ user-select: none;
             	<p>WEATHERITO by: Álvaro Pinto & Rui Moreira</p>
             </div>
 
+
       <div class="firstTitle">
-        <h1>Weatherito &nbsp;<img src="images\cloud_predifinida.png" alt="Smiley face" width="85" height="52" ></h1>
+        <h1>Weatherito &nbsp;</h1>
       </div>
+
+      <div class="icon1">
+        <div class="icon cloudy"><div class="cloud"></div><div class="cloud"></div></div>
+      </div>
+
+      <div class="icon2">
+        <div class="icon sunny">
+        <div class="sun">
+        <div class="rays"></div>
+        </div>
+        </div>
+      </div>
+
 
       <div class="secondTitle">
         <h2>What do you want to know?</h2>
@@ -63,7 +78,7 @@ user-select: none;
             </div>
             <input type="text" class="form-control" id="item"/>
             <div class="thirdTitle">
-            <h5>Favorites:</h5>
+            <h5><div id="div1" class="fa"></div>&nbsp;&nbsp; Favorites</h5>
             </div>
              <ul class="list-group" id="favorites-list">
               </ul>
@@ -76,21 +91,58 @@ user-select: none;
 
        <form action="/weather">
         <input type="text2" name="local"/>
-        <button type="submit2">Send</button>
+        <button type="submit2">Send &nbsp;<i class="fa fa-gear fa-spin" style="font-size:24px"></i></button>
       </form>
+
+<div class="localTitle">
+  <h2>Local</h2>
+  <p>&nbsp;</p>
+
+
+</div>
+
+<div class="local">
+  <p>&nbsp;</p>
+ 	<p>{{localizacao}}</p>
+  <p>{{horas}}</p>
+
+</div>
 
 
 <div class="dropdown">
-  <button class="dropbtn"><img src="images\cloud_predifinida.png" alt="Smiley face" width="85" height="52" ></button>
+  <button class="dropbtn"><img src="images/cloud_1.png" alt="Temperature" width="78" height="72" align="middle"></button>
   <div class="dropdown-content">
-  <p>{{localizacao}}</p>
-  <p>{{horas}}</p>
-	<p>{{temperatura}}</p>
+    	<p>{{temperatura}}</p>
   <p>{{temperatura_aparente}}</p>
-  <p>{{humidade}}</p>
-  <p>{{indice_uvs}}</p>
-  <p>{{precipitacao}}</p>
-  <p>{{ventos}}</p>
+  </div>
+</div>
+
+<div class="dropdown6">
+  <button class="dropbtn6"><img src="images/cloud_2.png" alt="Temperature" width="78" height="72" align="middle"></button>
+  <div class="dropdown-content6">
+     <p>{{humidade}}</p>
+  </div>
+</div>
+
+<div class="dropdown3">
+  <button class="dropbtn3"><img src="images/cloud_3.png" alt="Uv's" width="78" height="72" align="middle"></button>
+  <div class="dropdown-content3">
+     <p>{{indice_uvs}}</p>
+  </div>
+</div>
+
+<div class="dropdown4">
+  <button class="dropbtn4"><img src="images/cloud_4.png" alt="Precipitation" width="78" height="72" align="middle"></button>
+  <div class="dropdown-content4">
+     <p>{{precipitacao}}</p>
+  </div>
+</div>
+
+<div class="dropdown5">
+  <button class="dropbtn5"><img src="images/cloud_5.png" alt="Winds" width="78" height="72" align="middle"></button>
+  <div class="dropdown-content5">
+    <p>{{ventos}}</p>
+
   </div>
 </div>
 
@@ -173,6 +225,20 @@ window.onclick = function(event) {
     }
   }
 }
+
+function ratestar() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf006;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf123;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf005;";
+    }, 2000);
+}
+ratestar();
+setInterval(ratestar, 3000);
 </script>
 
     </body>
