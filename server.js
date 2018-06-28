@@ -114,34 +114,4 @@ app.get('/weather', (req, res) => {
 
 
 
-app.get('/precip', (req, res) => {
-    var address=req.query.local;
-        var encodedAddress = encodeURIComponent(address);
-
-        request({
-        
-                url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${keys.googleKey}`,
-                json: true
-                }, (error,response,body) => {
-                
-                var lat = body.results[0].geometry.location.lat;
-                var lng = body.results[0].geometry.location.lng;
-                var formatted_address = body.results[0].formatted_address;
-
-                request ({
-                    url: `https://api.darksky.net/forecast/${keys.darkskyKey}/${lat},${lng}?units=si`,
-                    json: true
-                    }, (DSerror, DSresponse, DSbody) => {
-
-                    var precip = DSbody.hourly.data[1].precipProbability;
-
-                    res.render('index.hbs',{
-                        precipitacao: "Probabilidade de precipitação: "  + precip*100 + "%",
-                    });
-                });
-            });
-
-     
-       });
-
 app.listen(3500);

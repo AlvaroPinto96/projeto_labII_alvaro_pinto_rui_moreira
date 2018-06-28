@@ -163,6 +163,8 @@ user-select: none;
       /*
        * check browser supports local storage
        */
+
+      try {
       if (localStorage) {
 
         var favoritesList_string = localStorage.getItem('favoritesList');
@@ -201,6 +203,12 @@ user-select: none;
             console.log(localStorage);
           }
       }
+      }
+                catch(err){
+                    res.render('index.hbs', {
+                        localizacao: "O endereço que tentou guardar não é válido!"
+                    })
+                }
     });
     </script>
 
